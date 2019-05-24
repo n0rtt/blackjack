@@ -1,7 +1,6 @@
 const sCase = (p, score) => {
     switch (p) {
         case "ace":
-            
             score += 11;
             break;
         case "jack":
@@ -24,9 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const deck = new Deck();
     const handPlayer = document.querySelector("#player-hand");
     const handDealer = document.querySelector("#dealer-hand");
-    // deck.mount(handPlayer);
-    // deck.mount2(handDealer);
-    // deck.shuffle();
 
     const hit = document.querySelector(".js-hit");
     const stand = document.querySelector(".js-stand");
@@ -39,25 +35,43 @@ document.addEventListener("DOMContentLoaded", () => {
     deck.mount(handPlayer);
     deck.mount2(handDealer);
     deck.shuffle();
-    let ace=0;
+    let ace = 0;
     while (dScore < 17) {
         deck.cards[count].mount(deck.element2);
-        deck.cards[count].element.style.backgroundImage = `url('/img/revers.svg')`;
+        deck.cards[
+            count
+        ].element.style.backgroundImage = `url('/img/revers.svg')`;
         dScore = sCase(deck.cards[count].rank, dScore);
-        if(deck.cards[count].rank==="ace"){ace++};        
-        if((dScore>21)&&(ace>0)){dScore-=10;ace--;}
-        if((dScore>21)&&(ace>0)){dScore-=10;ace--;}
+        if (deck.cards[count].rank === "ace") {
+            ace++;
+        }
+        if (dScore > 21 && ace > 0) {
+            dScore -= 10;
+            ace--;
+        }
+        if (dScore > 21 && ace > 0) {
+            dScore -= 10;
+            ace--;
+        }
         count++;
     }
 
-    ace=0;
+    ace = 0;
     hit.addEventListener("click", () => {
         deck.cards[count].mount(deck.element);
         pScore = sCase(deck.cards[count].rank, pScore);
-        if(deck.cards[count].rank==="ace"){ace++};
+        if (deck.cards[count].rank === "ace") {
+            ace++;
+        }
         console.log(ace);
-        if((pScore>21)&&(ace>0)){pScore-=10;ace--;}
-        if((pScore>21)&&(ace>0)){pScore-=10;ace--;}
+        if (pScore > 21 && ace > 0) {
+            pScore -= 10;
+            ace--;
+        }
+        if (pScore > 21 && ace > 0) {
+            pScore -= 10;
+            ace--;
+        }
         playerScore.textContent = "Score: " + pScore;
         count++;
     });

@@ -78,7 +78,6 @@ class Deck {
     }
     mount(parent) {
         this.render();
-        // parent.insertAdjacentElement("afterbegin", this.element);
         parent.insertBefore(this.element, parent.childNodes[0]);
     }
     mount2(parent) {
