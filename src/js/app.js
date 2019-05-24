@@ -13,13 +13,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const stand = document.querySelector(".js-stand");
 
     count = 0;
-
+    
     i = 0;
     while(i < 17) {
       deck.cards[count].mount(deck.element2);
-      i += deck.cards[count].rank;
+      console.log(deck.cards[count].element2);
+      switch(deck.cards[count].rank){
+        case "ace":
+        i+=11;
+        break;
+        case "jack":
+        i+=10;
+        break;
+        case "queen":
+        i+=10;
+        break;
+        case "king":
+        i+=10;
+        break;
+        default:
+        i+=deck.cards[count].rank;
+      }
       count++;
-      console.log('test');
+      console.log(i);
     }
 
     hit.addEventListener("click", () => {
