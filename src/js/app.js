@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dealerScore=document.querySelector("#dscore");
     const playerScore=document.querySelector("#pscore");
     
+
     let count = 0;
     let dScore = 0;
     let pScore=0;
@@ -45,6 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
       dScore=sCase(deck.cards[count].rank,dScore);
       count++;
     }
+    let game=true;
+    if(game===true){
 
     hit.addEventListener("click", () => {
         deck.cards[count].mount(deck.element);
@@ -53,11 +56,19 @@ document.addEventListener("DOMContentLoaded", () => {
         count++;
     });
 
+    const table=document.querySelector(".table");
     stand.addEventListener("click", () => {      
       for(let i=0;i<count;i++){
       deck.cards[i].element.style.backgroundImage="";
       }
       dealerScore.textContent="Score:"+dScore;
-      
+      if(((dScore>21)&&(pScore<=21))||((pScore<=21)&&(dScore<pScore))){table.innerHTML="<h1>WIN</h1>"}
+      if(((pScore>21)&&(dScore<=21))||((dScore<=21)&&(pScore<dScore))){table.innerHTML="<h1>LOSE</h1>"}
+      if(((dScore>21)&&(pScore>21))||(dScore===pScore)){table.innerHTML="<h1>DRAW</h1>"}
+      hit.style="display:none;";
+      stand.style="display:none;";
+      console.log("я работаю");
     });
+    }
+    
 });
