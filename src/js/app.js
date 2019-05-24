@@ -2,11 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Create and shuffle a new deck of cards
     const deck = new Deck();
     // const card = new Card(2, "clubs");
-    const hand = document.querySelector("#player-hand");
-    // card.mount(p);
+    const handPlayer = document.querySelector("#player-hand");
+    const handDealer = document.querySelector("#dealer-hand");
+
+    deck.mount2(handDealer);
+    deck.mount(handPlayer);
     deck.shuffle();
-    deck.mount(hand);
-    console.log(deck);
 
     const hit = document.querySelector(".js-hit");
     const stand = document.querySelector(".js-stand");
@@ -19,6 +20,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // stand.document.addEventListener("click", () => {
-
     // });
 });
