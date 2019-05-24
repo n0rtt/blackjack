@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const handPlayer = document.querySelector("#player-hand");
     const handDealer = document.querySelector("#dealer-hand");
 
-    deck.mount2(handDealer);
+    
     deck.mount(handPlayer);
+    deck.mount2(handDealer);
+    
     deck.shuffle();
 
     const hit = document.querySelector(".js-hit");

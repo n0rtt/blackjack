@@ -70,21 +70,20 @@ class Deck {
         this.element = document.createElement("div");
         this.element.innerHTML = "";
         this.element.className = "cards";
+    }
+    render2() {
         this.element2 = document.createElement("div");
         this.element2.innerHTML = "";
         this.element2.className = "cards";
     }
-
     mount(parent) {
         this.render();
         // parent.insertAdjacentElement("afterbegin", this.element);
         parent.insertBefore(this.element, parent.childNodes[0]);
     }
-
     mount2(parent) {
-        this.render();
+        this.render2();
         parent.appendChild(this.element2);
-
     }
 
     /*
