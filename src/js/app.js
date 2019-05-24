@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     deck.mount(handPlayer);
     deck.mount2(handDealer);
     deck.shuffle();
+    let ace=0;
     while (dScore < 17) {
         deck.cards[count].mount(deck.element2);
         deck.cards[
@@ -46,14 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
         ].element.style.backgroundImage = `url('/img/revers.svg')`;
         dScore = sCase(deck.cards[count].rank, dScore);
         count++;
+        if(deck.cards[count].rank==="ace"){ace++};        
+        if((dScore>21)&&(ace>0)){dScore-=10;ace--;}
     }
+    if((dScore>21)&&(ace>0)){dScore-=10;ace--;}
 
+    ace=0;
     hit.addEventListener("click", () => {
         deck.cards[count].mount(deck.element);
         pScore = sCase(deck.cards[count].rank, pScore);
         playerScore.textContent = "Score: " + pScore;
         count++;
+        if(deck.cards[count].rank==="ace"){ace++};
+        if((pScore>21)&&(ace>0)){pScore-=10;ace--;}
     });
+    if((pScore>21)&&(ace>0)){pScore-=10;ace--;}
 
     const table = document.querySelector(".table");
     stand.addEventListener("click", () => {
