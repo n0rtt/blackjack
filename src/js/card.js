@@ -10,7 +10,7 @@ class Card {
     render() {
         this.element = document.createElement("div");
         this.element.innerHTML = "";
-        this.element.className = "card";
+        this.element.className = `card face-${this.rank}-of-${this.suit}`;
         this.element.style.backgroundImage = `url(img/cards/${this.rank}-of-${this.suit}.svg`;
     }
 
