@@ -14,6 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     count = 0;
 
+    i = 0;
+    while(i < 17) {
+      deck.cards[count].mount(deck.element2);
+      i += deck.cards[count].rank;
+      count++;
+      console.log('test');
+    }
+
     hit.addEventListener("click", () => {
         deck.cards[count].mount(deck.element);
         count++;

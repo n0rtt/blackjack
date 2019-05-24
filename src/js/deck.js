@@ -84,6 +84,7 @@ class Deck {
     mount2(parent) {
         this.render();
         parent.appendChild(this.element2);
+
     }
 
     /*
